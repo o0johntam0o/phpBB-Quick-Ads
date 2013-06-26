@@ -1,0 +1,472 @@
+<!-- IF not S_IS_BOT -->
+<!-- IF S_QUICK_ADS_AVAILABLE -->
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		if (typeof(jQuery) == 'undefined')
+			document.write('<scr'+'ipt src="{T_SUPER_TEMPLATE_PATH}/mods/jquery/jquery-1.9.1.min.js" type="text/javascript"></scr'+'ipt>');
+		
+		var tmp;
+		var quickAds_frameT = '#quick_ads_frame_top';
+		var quickAds_frameB = '#quick_ads_frame_bottom';
+		var quickAds_frameL = '#quick_ads_frame_left';
+		var quickAds_frameR = '#quick_ads_frame_right';
+		
+		function quickAds_preSetPos()
+		{
+			var marginT = 0, marginB = 0;
+			tmp = jQuery(window).width();
+			
+			if (jQuery(quickAds_frameL).length > 0)
+			{
+				tmp = tmp - jQuery(quickAds_frameL).width();
+			}
+			if (jQuery(quickAds_frameR).length > 0)
+			{
+				tmp = tmp - jQuery(quickAds_frameR).width();
+			}
+			
+			tmp = tmp - 20;
+			
+			if (jQuery(quickAds_frameT).length > 0)
+			{
+				jQuery(quickAds_frameT).css({'max-width':tmp + 'px'});
+				marginT = Math.round((tmp - jQuery(quickAds_frameT).width()) / 2);
+			}
+			if (jQuery(quickAds_frameB).length > 0)
+			{
+				jQuery(quickAds_frameB).css({'max-width':tmp + 'px'});
+				marginB = Math.round((tmp - jQuery(quickAds_frameB).width()) / 2);
+			}
+			
+			if (jQuery(quickAds_frameL).length > 0)
+			{
+				tmp = jQuery(quickAds_frameL).width() + jQuery(window).scrollLeft() + 10;
+			}
+			else
+			{
+				tmp = jQuery(window).scrollLeft() + 10;
+			}
+			
+			if (jQuery(quickAds_frameT).length > 0)
+			{
+				jQuery(quickAds_frameT).css({'left':tmp + marginT + 'px'});
+			}
+			if (jQuery(quickAds_frameB).length > 0)
+			{
+				jQuery(quickAds_frameB).css({'left':tmp + marginB + 'px'});
+			}
+		}
+		
+		function quickAds_setPos(id, pos)
+		{
+			if (id.length > 0)
+			{
+				var selfHeight, windowHeight, scrollTop, scrollLeft;
+				
+				if (pos == 'left')
+				{
+					if (jQuery(quickAds_frameL).length > 0)
+					{
+						jQuery(quickAds_frameL).css({'display':'block'});
+					}
+					else
+					{
+						return;
+					}
+				}
+				if (pos == 'right')
+				{
+					if (jQuery(quickAds_frameR).length > 0)
+					{
+						jQuery(quickAds_frameR).css({'display':'block'});
+					}
+					else
+					{
+						return;
+					}
+				}
+				if (pos == 'top')
+				{
+					if (jQuery(quickAds_frameT).length > 0)
+					{
+						jQuery(quickAds_frameT).css({'display':'block'});
+					}
+					else
+					{
+						return;
+					}
+				}
+				if (pos == 'bottom')
+				{
+					if (jQuery(quickAds_frameB).length > 0)
+					{
+						jQuery(quickAds_frameB).css({'display':'block'});
+					}
+					else
+					{
+						return;
+					}
+				}
+				
+				jQuery(window).scroll(function()
+				{
+					if (jQuery(id).length > 0 && jQuery(id).width() != 0)
+					{
+						selfHeight = jQuery(id).height();
+						windowHeight = jQuery(window).height();
+						scrollTop = jQuery(window).scrollTop();
+						scrollLeft = jQuery(window).scrollLeft();
+						if (pos == 'left' || pos == 'right')
+						{
+							if (selfHeight <= windowHeight)
+							{
+								jQuery(id).animate({top:scrollTop+5}, {duration:800,queue:false});
+							}
+							else
+							{
+								if (selfHeight <= windowHeight + scrollTop)
+								{
+									tmp = windowHeight - selfHeight + scrollTop;
+									jQuery(id).animate({top:tmp}, {duration:800,queue:false});
+								}
+								else
+								{
+									jQuery(id).animate({top:5}, {duration:800,queue:false});
+								}
+							}
+							if (pos == 'left')
+							{
+								jQuery(id).css({'left':5+scrollLeft});
+							}
+							else
+							{
+								jQuery(id).css({'right':5-scrollLeft});
+							}
+						}
+						else if (pos == 'top' || pos == 'bottom')
+						{
+							quickAds_preSetPos();
+							
+							if (pos == 'top')
+							{
+								jQuery(id).animate({top:scrollTop+5}, {duration:800,queue:false});
+							}
+							else
+							{
+								jQuery(id).animate({bottom:5-scrollTop}, {duration:800,queue:false});
+							}
+						}
+					}
+				});
+			
+				jQuery(window).resize(function()
+				{
+					if (jQuery(id).length > 0)
+					{
+						scrollLeft = jQuery(window).scrollLeft();
+						
+						if (pos == 'left' || pos == 'right')
+						{
+							if (pos == 'left')
+							{
+								jQuery(id).css({'left':5+scrollLeft});
+							}
+							else
+							{
+								jQuery(id).css({'right':5-scrollLeft});
+							}
+						}
+						else if (pos == 'top' || pos == 'bottom')
+						{
+							quickAds_preSetPos();
+						}
+					}
+				});
+			}
+			else
+			{
+				// Some command...
+				// alert("Error!");
+			}
+		}
+		
+		function quickAds_checkDimension(id, wmin, hmin)
+		{
+			if (jQuery(id).length > 0)
+			{
+				if (jQuery(window).width() < wmin || jQuery(window).height() < hmin)
+				{
+					jQuery(id).css({'display':'none'});
+				}
+				else
+				{
+					jQuery(id).css({'display':'block'});
+				}
+			
+				jQuery(window).resize(function()
+				{
+					if (jQuery(window).width() < wmin || jQuery(window).height() < hmin)
+					{
+						jQuery(id).css({'display':'none'});
+					}
+					else
+					{
+						jQuery(id).css({'display':'block'});
+					}
+				});
+			}
+			else
+			{
+				// Some command...
+				// alert("Error!");
+			}
+		}
+		
+		function quickAds_Close(id, time)
+		{
+			if (jQuery(id).length > 0)
+			{
+				<!-- IF S_QUICK_ADS_COOKIE -->
+				if (time>0)
+				{
+					var exdate = new Date();
+					exdate.setMinutes(exdate.getMinutes() + time);
+					var c_value = escape(id) + ((time == null) ? "" : "; expires=" + exdate.toUTCString());
+					document.cookie = id + "=" + c_value;
+					document.cookie = id + "_session=" + "{S_QUICK_ADS_SESSION}";
+				}
+				<!-- ENDIF -->
+				jQuery(id).remove();
+				quickAds_preSetPos();
+			}
+			else
+			{
+				// Some command...
+				// alert("Error!");
+			}
+		}
+		
+		function quickAds_CheckCookie()
+		{
+			var i, x, y, ARRcookies = document.cookie.split(";");
+			for (i=0; i<ARRcookies.length; i++)
+			{
+				x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+				y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+				x = x.replace(/^\s+|\s+$/g,"");
+				
+				if (x == quickAds_frameT + "_session" && jQuery(quickAds_frameT).length > 0 && y == "{S_QUICK_ADS_SESSION}")
+				{
+					jQuery(quickAds_frameT).remove();
+				}
+				else if (x == quickAds_frameB + "_session" && (jQuery(quickAds_frameB).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
+				{
+					jQuery(quickAds_frameB).remove();
+				}
+				else if (x == quickAds_frameL + "_session" && (jQuery(quickAds_frameL).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
+				{
+					jQuery(quickAds_frameL).remove();
+				}
+				else if (x == quickAds_frameR + "_session" && (jQuery(quickAds_frameR).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
+				{
+					jQuery(quickAds_frameR).remove();
+				}
+				
+				if (x == quickAds_frameT && jQuery(quickAds_frameT).length > 0)
+				{
+					jQuery(quickAds_frameT).remove();
+				}
+				else if (x == quickAds_frameB && jQuery(quickAds_frameB).length > 0)
+				{
+					jQuery(quickAds_frameB).remove();
+				}
+				else if (x == quickAds_frameL && jQuery(quickAds_frameL).length > 0)
+				{
+					jQuery(quickAds_frameL).remove();
+				}
+				else if (x == quickAds_frameR && jQuery(quickAds_frameR).length > 0)
+				{
+					jQuery(quickAds_frameR).remove();
+				}
+			}
+		}
+	/* ]]> */
+	</script>
+	
+	<!-- IF S_QUICK_ADS_LEFT -->
+	<div id="quick_ads_frame_left" style="display:none; position:absolute; top:5px; left:5px; z-index:{S_QUICK_ADS_ZINDEX};">
+		<!-- IF S_QUICK_ADS_CLOSEBT -->
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#quick_ads_frame_left', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<!-- ENDIF -->
+		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
+			<tbody>
+				<!-- BEGIN quick_ads_row_left -->
+				<tr>
+					<td align="center" style="border:1px solid #c3c3c3;">
+						<div id="quick_ads_{quick_ads_row_left.QUICK_ADS_ID}" style="background-color: {quick_ads_row_left.QUICK_ADS_BG_COLOR}; text-align: center; font-size: larger; padding:5px; margin:0; width: <!-- IF quick_ads_row_left.QUICK_ADS_WIDTH > 0 -->{quick_ads_row_left.QUICK_ADS_WIDTH}px<!-- ELSE -->auto<!-- ENDIF -->; <!-- IF quick_ads_row_left.QUICK_ADS_HEIGHT > 0 -->height: {quick_ads_row_left.QUICK_ADS_HEIGHT}px<!-- ELSE -->auto<!-- ENDIF -->; overflow: {quick_ads_row_left.QUICK_ADS_OVERF}; cursor:pointer;">
+							{quick_ads_row_left.QUICK_ADS_TEXT}
+							<!-- IF quick_ads_row_left.QUICK_ADS_BG_IMG != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_left.QUICK_ADS_ID}').css({'background-image': 'url("{quick_ads_row_left.QUICK_ADS_BG_IMG}")'});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+							<!-- IF quick_ads_row_left.QUICK_ADS_HREF != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_left.QUICK_ADS_ID}').click(function(){window.open('{quick_ads_row_left.QUICK_ADS_HREF}');});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+						</div>
+					</td>
+				</tr>
+				<!-- END quick_ads_row_left -->
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		quickAds_checkDimension(quickAds_frameL, {S_QUICK_ADS_WMIN_LEFT}, {S_QUICK_ADS_HMIN_LEFT});
+	/* ]]> */
+	</script>
+	<!-- ENDIF -->
+	
+	<!-- IF S_QUICK_ADS_RIGHT -->
+	<div id="quick_ads_frame_right" style="display:none; position:absolute; top:5px; right:5px; z-index:{S_QUICK_ADS_ZINDEX};">
+		<!-- IF S_QUICK_ADS_CLOSEBT -->
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#quick_ads_frame_right', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<!-- ENDIF -->
+		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
+			<tbody>
+				<!-- BEGIN quick_ads_row_right -->
+				<tr>
+					<td align="center" style="border:1px solid #c3c3c3;">
+						<div id="quick_ads_{quick_ads_row_right.QUICK_ADS_ID}" style="background-color: {quick_ads_row_right.QUICK_ADS_BG_COLOR}; text-align: center; font-size: larger; padding:5px; margin:0; width: <!-- IF quick_ads_row_right.QUICK_ADS_WIDTH > 0 -->{quick_ads_row_right.QUICK_ADS_WIDTH}px<!-- ELSE -->auto<!-- ENDIF -->; <!-- IF quick_ads_row_right.QUICK_ADS_HEIGHT > 0 -->height: {quick_ads_row_right.QUICK_ADS_HEIGHT}px<!-- ELSE -->auto<!-- ENDIF -->; overflow: {quick_ads_row_right.QUICK_ADS_OVERF}; cursor:pointer;">
+							{quick_ads_row_right.QUICK_ADS_TEXT}
+							<!-- IF quick_ads_row_right.QUICK_ADS_BG_IMG != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_right.QUICK_ADS_ID}').css({'background-image': 'url("{quick_ads_row_right.QUICK_ADS_BG_IMG}")'});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+							<!-- IF quick_ads_row_right.QUICK_ADS_HREF != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_right.QUICK_ADS_ID}').click(function(){window.open('{quick_ads_row_right.QUICK_ADS_HREF}');});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+						</div>
+					</td>
+				</tr>
+				<!-- END quick_ads_row_right -->
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		quickAds_checkDimension(quickAds_frameR, {S_QUICK_ADS_WMIN_RIGHT}, {S_QUICK_ADS_HMIN_RIGHT});
+	/* ]]> */
+	</script>
+	<!-- ENDIF -->
+	
+	<!-- IF S_QUICK_ADS_TOP -->
+	<div id="quick_ads_frame_top" style="display:none; position:absolute; top:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
+		<!-- IF S_QUICK_ADS_CLOSEBT -->
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#quick_ads_frame_top', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<!-- ENDIF -->
+		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
+			<tbody>
+				<tr>
+					<!-- BEGIN quick_ads_row_top -->
+					<td valign="middle" style="border:1px solid #c3c3c3;">
+						<div id="quick_ads_{quick_ads_row_top.QUICK_ADS_ID}" style="background-color: {quick_ads_row_top.QUICK_ADS_BG_COLOR}; text-align: center; font-size: larger; float:left; padding:5px; margin:0; width: <!-- IF quick_ads_row_top.QUICK_ADS_WIDTH > 0 -->{quick_ads_row_top.QUICK_ADS_WIDTH}px<!-- ELSE -->auto<!-- ENDIF -->; <!-- IF quick_ads_row_top.QUICK_ADS_HEIGHT > 0 -->height: {quick_ads_row_top.QUICK_ADS_HEIGHT}px<!-- ELSE -->auto<!-- ENDIF -->; overflow: {quick_ads_row_top.QUICK_ADS_OVERF}; cursor:pointer;">
+							{quick_ads_row_top.QUICK_ADS_TEXT}
+							<!-- IF quick_ads_row_top.QUICK_ADS_BG_IMG != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_top.QUICK_ADS_ID}').css({'background-image': 'url("{quick_ads_row_top.QUICK_ADS_BG_IMG}")'});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+							<!-- IF quick_ads_row_top.QUICK_ADS_HREF != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_top.QUICK_ADS_ID}').click(function(){window.open('{quick_ads_row_top.QUICK_ADS_HREF}');});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+						</div>
+					</td>
+					<!-- END quick_ads_row_top -->
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		quickAds_checkDimension(quickAds_frameT, {S_QUICK_ADS_WMIN_TOP}, {S_QUICK_ADS_HMIN_TOP});
+	/* ]]> */
+	</script>
+	<!-- ENDIF -->
+	
+	<!-- IF S_QUICK_ADS_BOTTOM -->
+	<div id="quick_ads_frame_bottom" style="display:none; position:absolute; bottom:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
+		<!-- IF S_QUICK_ADS_CLOSEBT -->
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#quick_ads_frame_bottom', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<!-- ENDIF -->
+		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
+			<tbody>
+				<tr>
+					<!-- BEGIN quick_ads_row_bottom -->
+					<td valign="middle" style="border:1px solid #c3c3c3;">
+						<div id="quick_ads_{quick_ads_row_bottom.QUICK_ADS_ID}" style="background-color: {quick_ads_row_bottom.QUICK_ADS_BG_COLOR}; text-align: center; font-size: larger; float:left; padding:5px; margin:0; width: <!-- IF quick_ads_row_bottom.QUICK_ADS_WIDTH > 0 -->{quick_ads_row_bottom.QUICK_ADS_WIDTH}px<!-- ELSE -->auto<!-- ENDIF -->; <!-- IF quick_ads_row_bottom.QUICK_ADS_HEIGHT > 0 -->height: {quick_ads_row_bottom.QUICK_ADS_HEIGHT}px<!-- ELSE -->auto<!-- ENDIF -->; overflow: {quick_ads_row_bottom.QUICK_ADS_OVERF}; cursor:pointer;">
+							{quick_ads_row_bottom.QUICK_ADS_TEXT}
+							<!-- IF quick_ads_row_bottom.QUICK_ADS_BG_IMG != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_bottom.QUICK_ADS_ID}').css({'background-image': 'url("{quick_ads_row_bottom.QUICK_ADS_BG_IMG}")'});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+							<!-- IF quick_ads_row_bottom.QUICK_ADS_HREF != '' -->
+							<script type="text/javascript">
+							/* <![CDATA[ */
+								jQuery('#quick_ads_{quick_ads_row_bottom.QUICK_ADS_ID}').click(function(){window.open('{quick_ads_row_bottom.QUICK_ADS_HREF}');});
+							/* ]]> */
+							</script>
+							<!-- ENDIF -->
+						</div>
+					</td>
+					<!-- END quick_ads_row_bottom -->
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		quickAds_checkDimension(quickAds_frameB, {S_QUICK_ADS_WMIN_BOTTOM}, {S_QUICK_ADS_HMIN_BOTTOM});
+	/* ]]> */
+	</script>
+	<!-- ENDIF -->
+	
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery(document).ready(function()
+		{
+			<!-- IF S_QUICK_ADS_COOKIE -->
+			quickAds_CheckCookie();
+			<!-- ENDIF -->
+			quickAds_setPos(jQuery(quickAds_frameL), 'left');
+			quickAds_setPos(jQuery(quickAds_frameR), 'right');
+			quickAds_setPos(jQuery(quickAds_frameT), 'top');
+			quickAds_setPos(jQuery(quickAds_frameB), 'bottom');
+			quickAds_preSetPos();
+		});
+	/* ]]> */
+	</script>
+<!-- ENDIF -->
+<!-- ENDIF -->

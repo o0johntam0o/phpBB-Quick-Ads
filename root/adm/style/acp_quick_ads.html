@@ -1,0 +1,268 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_QUICK_ADS_TITLE_ACP}</h1>
+<p>{S_QUICK_ADS_VERSION} <a href="mailto:o0johntam0o@gmail.com">[&copy;]</a></p>
+
+<!-- IF S_QUICK_ADS_WARNING -->
+<div class="errorbox">
+	<h3>{L_WARNING}</h3>
+	<p>{ERROR_MSG}</p>
+</div>
+<!-- ENDIF -->
+
+<form id="acp_quick_ads" method="post" action="{U_ACTION}">
+<!-- IF S_QUICK_ADS_ACP_INDEX -->
+	<fieldset>
+		<dl>
+			<dt><label>{L_QUICK_ADS_ENABLE}:</label><br /><span>{L_QUICK_ADS_ENABLE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="radio" class="radio" name="quick_ads_enable" value="1" id="quick_ads_enable_yes"<!-- IF S_QUICK_ADS_ENABLE --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_enable_yes"> {L_YES}</label>
+				<input type="radio" class="radio" name="quick_ads_enable" value="0" id="quick_ads_enable_no"<!-- IF not S_QUICK_ADS_ENABLE --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_enable_no"> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_zindex">{L_QUICK_ADS_ZINDEX}:</label><br /><span>{L_QUICK_ADS_ZINDEX_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_zindex" value="{S_QUICK_ADS_ZINDEX}" id="quick_ads_zindex" />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_QUICK_ADS_CLOSEBT}:</label><br /><span>{L_QUICK_ADS_CLOSEBT_EXPLAIN}</span></dt>
+			<dd>
+				<input type="radio" class="radio" name="quick_ads_closebt" value="1" id="quick_ads_closebt_yes"<!-- IF S_QUICK_ADS_CLOSEBT --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_closebt_yes"> {L_YES}</label>
+				<input type="radio" class="radio" name="quick_ads_closebt" value="0" id="quick_ads_closebt_no"<!-- IF not S_QUICK_ADS_CLOSEBT --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_closebt_no"> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label>{L_QUICK_ADS_COOKIE}:</label><br /><span>{L_QUICK_ADS_COOKIE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="radio" class="radio" name="quick_ads_cookie" value="1" id="quick_ads_cookie_yes"<!-- IF S_QUICK_ADS_COOKIE --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_cookie_yes"> {L_YES}</label>
+				<input type="radio" class="radio" name="quick_ads_cookie" value="0" id="quick_ads_cookie_no"<!-- IF not S_QUICK_ADS_COOKIE --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_cookie_no"> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_cookie_time">{L_QUICK_ADS_COOKIE_TIME}:</label><br /><span>{L_QUICK_ADS_COOKIE_TIME_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_cookie_time" value="{S_QUICK_ADS_COOKIE_TIME}" id="quick_ads_cookie_time" />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_wmin_left">{L_QUICK_ADS_MSIZE} ({L_QUICK_ADS_LEFT}):</label><br /><span>{L_QUICK_ADS_MSIZE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_wmin_left" value="{S_QUICK_ADS_WMIN_LEFT}" id="quick_ads_wmin_left" />
+				&nbsp;x&nbsp;
+				<input type="text" maxlength="4" size="4" name="quick_ads_hmin_left" value="{S_QUICK_ADS_HMIN_LEFT}" id="quick_ads_hmin_left" />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_wmin_right">{L_QUICK_ADS_MSIZE} ({L_QUICK_ADS_RIGHT}):</label><br /><span>{L_QUICK_ADS_MSIZE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_wmin_right" value="{S_QUICK_ADS_WMIN_RIGHT}" id="quick_ads_wmin_right" />
+				&nbsp;x&nbsp;
+				<input type="text" maxlength="4" size="4" name="quick_ads_hmin_right" value="{S_QUICK_ADS_HMIN_RIGHT}" id="quick_ads_hmin_right" />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_wmin_top">{L_QUICK_ADS_MSIZE} ({L_QUICK_ADS_TOP}):</label><br /><span>{L_QUICK_ADS_MSIZE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_wmin_top" value="{S_QUICK_ADS_WMIN_TOP}" id="quick_ads_wmin_top" />
+				&nbsp;x&nbsp;
+				<input type="text" maxlength="4" size="4" name="quick_ads_hmin_top" value="{S_QUICK_ADS_HMIN_TOP}" id="quick_ads_hmin_top" />
+			</dd>
+		</dl>
+		<dl>
+			<dt><label for="quick_ads_wmin_bottom">{L_QUICK_ADS_MSIZE} ({L_QUICK_ADS_BOTTOM}):</label><br /><span>{L_QUICK_ADS_MSIZE_EXPLAIN}</span></dt>
+			<dd>
+				<input type="text" maxlength="4" size="4" name="quick_ads_wmin_bottom" value="{S_QUICK_ADS_WMIN_BOTTOM}" id="quick_ads_wmin_bottom" />
+				&nbsp;x&nbsp;
+				<input type="text" maxlength="4" size="4" name="quick_ads_hmin_bottom" value="{S_QUICK_ADS_HMIN_BOTTOM}" id="quick_ads_hmin_bottom" />
+			</dd>
+		</dl>
+	</fieldset>
+<!-- ELSE --><!--// endif mode = index -->
+	<fieldset>
+		<p class="submit-buttons">
+			<input type="text" maxlength="30" size="20" name="quick_ads_add_new" value="{L_QUICK_ADS_ADD_FIELD_NAME}" />
+			<input class="button1" type="submit" name="add_field" value="{L_QUICK_ADS_ADD_FIELD}" />
+		</p>
+	</fieldset>
+	
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		function Quick_Ads_Item_Toggle(item)
+		{
+			var qa_tmp = document.getElementById(item);
+			if (qa_tmp.style.display == 'none')
+			{
+				qa_tmp.style.display = 'block';
+			}
+			else
+			{
+				qa_tmp.style.display = 'none';
+			}
+		}
+	/* ]]> */
+	</script>
+
+	<!-- BEGIN quick_ads_row -->
+	<fieldset>
+		<legend onclick="Quick_Ads_Item_Toggle('quick_ads_item_{quick_ads_row.QUICK_ADS_ID}');" style="cursor:pointer;">{quick_ads_row.QUICK_ADS_LEGEND} ({L_QUICK_ADS_ITEM_TOGGLE})</legend>
+		<div id="quick_ads_item_{quick_ads_row.QUICK_ADS_ID}" style="display:none;">
+			<dl>
+				<dt><label for="quick_ads_name_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_NAME}:</label><br /><span>{L_QUICK_ADS_NAME_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" maxlength="30" size="20" name="quick_ads_name_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_NAME}" id="quick_ads_name_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_pos_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_POS}:</label><br /><span>{L_QUICK_ADS_POS_EXPLAIN}</span></dt>
+				<dd>
+					<select name="quick_ads_pos_{quick_ads_row.QUICK_ADS_ID}" id="quick_ads_pos_{quick_ads_row.QUICK_ADS_ID}">
+						<option value="0" <!-- IF quick_ads_row.QUICK_ADS_POS == 0 --> selected="selected"<!-- ENDIF -->>{L_DISABLE}</option>
+						<option value="1" <!-- IF quick_ads_row.QUICK_ADS_POS == 1 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_TOP}</option>
+						<option value="2" <!-- IF quick_ads_row.QUICK_ADS_POS == 2 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_BOTTOM}</option>
+						<option value="3" <!-- IF quick_ads_row.QUICK_ADS_POS == 3 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_LEFT}</option>
+						<option value="4" <!-- IF quick_ads_row.QUICK_ADS_POS == 4 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_RIGHT}</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_href_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_HREF}:</label><br /><span>{L_QUICK_ADS_HREF_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" size="60" name="quick_ads_href_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_HREF}" id="quick_ads_href_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_bg_img_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_BG_IMG}:</label><br /><span>{L_QUICK_ADS_BG_IMG_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" size="60" name="quick_ads_bg_img_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_BG_IMG}" id="quick_ads_bg_img_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_bg_color_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_BG_COLOR}:</label><br /><span>{L_QUICK_ADS_BG_COLOR_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" size="4" name="quick_ads_bg_color_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_BG_COLOR}" id="quick_ads_bg_color_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_text_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_TEXT}:</label><br /><span>{S_QUICK_ADS_TEXT_EXPLAIN}</span></dt>
+				<dd>
+					<textarea name="quick_ads_text_{quick_ads_row.QUICK_ADS_ID}" id="quick_ads_text_{quick_ads_row.QUICK_ADS_ID}" rows="10" cols="40" >{quick_ads_row.QUICK_ADS_TEXT}</textarea>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_width_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_SIZE}:</label><br /><span>{L_QUICK_ADS_SIZE_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" maxlength="4" size="4" name="quick_ads_width_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_WIDTH}" id="quick_ads_width_{quick_ads_row.QUICK_ADS_ID}" />
+					&nbsp;x&nbsp;
+					<input type="text" maxlength="4" size="4" name="quick_ads_height_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_HEIGHT}" id="quick_ads_height_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_overf_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_OVERF}:</label><br /><span>{L_QUICK_ADS_OVERF_EXPLAIN}</span></dt>
+				<dd>
+					<select name="quick_ads_overf_{quick_ads_row.QUICK_ADS_ID}" id="quick_ads_overf_{quick_ads_row.QUICK_ADS_ID}">
+						<option value="0" <!-- IF quick_ads_row.QUICK_ADS_OVERF == 0 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_OVERF_HIDDEN}</option>
+						<option value="1" <!-- IF quick_ads_row.QUICK_ADS_OVERF == 1 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_OVERF_VISIBLE}</option>
+						<option value="2" <!-- IF quick_ads_row.QUICK_ADS_OVERF == 2 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_OVERF_SCROLL}</option>
+						<option value="3" <!-- IF quick_ads_row.QUICK_ADS_OVERF == 3 --> selected="selected"<!-- ENDIF -->>{L_QUICK_ADS_OVERF_AUTO}</option>
+					</select>
+				</dd>
+			</dl>
+			<dl>
+				<dt><label for="quick_ads_priority_{quick_ads_row.QUICK_ADS_ID}">{L_QUICK_ADS_PRIORITY}:</label><br /><span>{L_QUICK_ADS_PRIORITY_EXPLAIN}</span></dt>
+				<dd>
+					<input type="text" maxlength="2" size="4" name="quick_ads_priority_{quick_ads_row.QUICK_ADS_ID}" value="{quick_ads_row.QUICK_ADS_PRIORITY}" id="quick_ads_priority_{quick_ads_row.QUICK_ADS_ID}" />
+				</dd>
+			</dl>
+			<dl>
+				<dt><label onclick="Quick_Ads_Item_Toggle('quick_ads_more_prop_{quick_ads_row.QUICK_ADS_ID}');">{L_QUICK_ADS_MORE_PROP}</label></dt>
+			</dl>
+			
+			<div id="quick_ads_more_prop_{quick_ads_row.QUICK_ADS_ID}" style="display:none;">
+				
+				<dl>
+					<dt><label>{L_QUICK_ADS_ONPAGE}:</label><br /><span>{L_QUICK_ADS_ONPAGE_EXPLAIN}</span></dt>
+					<dd>
+						<input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="1"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_FAQ --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_FAQ}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="2"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_INDEX --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_INDEX}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="3"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_MCP --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_MCP}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="4"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_MEMBERLIST --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_MEMBERLIST}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="5"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_POSTING --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_POSTING}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="6"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_REPORT --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_REPORT}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="7"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_SEARCH --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_SEARCH}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="8"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_UCP --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_UCP}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="9"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_VIEWFORUM --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_VIEWFORUM}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="10"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_VIEWONLINE --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_VIEWONLINE}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="11"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_VIEWTOPIC --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_VIEWTOPIC}</label>
+
+						<!--// Custom pages
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="12"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_PORTAL --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_PORTAL}</label>
+
+						<br /><input type="checkbox" class="radio" name="quick_ads_onpage_{quick_ads_row.QUICK_ADS_ID}[]" value="13"<!-- IF quick_ads_row.QUICK_ADS_ONPAGE_GALLERY --> checked="checked"<!-- ENDIF --> />
+						<label> {L_QUICK_ADS_ONPAGE_ITEM_GALLERY}</label>
+						//-->
+					</dd>
+				</dl>
+				<dl>
+					<dt><label>{L_QUICK_ADS_GROUP}:</label><br /><span>{L_QUICK_ADS_GROUP_EXPLAIN}</span></dt>
+					<dd>
+						<!-- BEGIN group -->
+						<input type="checkbox" class="radio" name="quick_ads_group_{quick_ads_row.QUICK_ADS_ID}[]" value="{quick_ads_row.group.GROUP_ID}"<!-- IF quick_ads_row.group.GROUP_CHECKED --> checked="checked"<!-- ENDIF --> />
+						<label> {quick_ads_row.group.GROUP_NAME}</label><br />
+						<!-- END group -->
+					</dd>
+				</dl>
+				<dl>
+					<dt><label>{L_QUICK_ADS_DEL_FIELD}:</label><br /><span>{L_QUICK_ADS_DEL_FIELD_EXPLAIN}</span></dt>
+					<dd>
+						<input type="radio" class="radio" name="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}" value="1" id="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}_yes" />
+						<label for="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}_yes"> {L_YES}</label>
+						<input type="radio" class="radio" name="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}" value="0" id="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}_no" checked="checked" />
+						<label for="quick_ads_del_{quick_ads_row.QUICK_ADS_ID}_no"> {L_NO}</label>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</fieldset>
+	<!-- END quick_ads_row -->
+<!-- ENDIF --><!--// endif mode = details -->
+	<fieldset>
+		<legend>{L_ACP_SUBMIT_CHANGES}</legend>
+		<p class="submit-buttons">
+			<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+			<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+		</p>
+		{S_FORM_TOKEN}
+	</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->
