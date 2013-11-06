@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.1 of 19.03.2013
+* @version 1.1.2 of 06.11.2013
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -50,6 +50,10 @@ $language_file = 'mods/info_acp_quick_ads';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	'1.1.2'	=> array(
+		// Nothing changed in this version
+	),
+	
 	'1.1.1'	=> array(
 		// Nothing changed in this version
 	),

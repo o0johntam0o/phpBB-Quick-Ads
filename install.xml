@@ -5,12 +5,10 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-
 		<title lang="en"><![CDATA[Quick Ads]]></title>
-
 		<description lang="en"><![CDATA[Append any HTML, jQuery/JS code into your forum quickly! Very simple and useful.]]></description>
-
-		<author-notes lang="en"><![CDATA[Do not forget to delete or rename the file "root/install_quick_ads.php" after installation (For Un-Installing, re-upload it).]]></author-notes>
+		<author-notes lang="en"><![CDATA[]]></author-notes>
+		<github><![CDATA[https://github.com/o0johntam0o/phpBB-Quick-Ads]]></github>
 		
 		<author-group>
 			<author>
@@ -19,15 +17,22 @@
 			</author>
 		</author-group>
 
-		<mod-version>1.1.1</mod-version>
+		<mod-version>1.1.2</mod-version>
 
 		<installation>
 			<level>easy</level>
 			<time>60</time>
-			<target-version>3.0.11</target-version>
+			<target-version>3.0.12</target-version>
 		</installation>
 
 		<history>
+			<entry>
+				<date>2013-11-06</date>
+				<rev-version>1.1.2</rev-version>
+				<changelog lang="en">
+					<change>Update jQuery to version 1.10.2</change>
+				</changelog>
+			</entry>
 			<entry>
 				<date>2013-03-19</date>
 				<rev-version>1.1.1</rev-version>
@@ -60,11 +65,11 @@
 			<link type="template" href="./contrib/subsilver2.xml" lang="en">SubSilver2</link>
 			<link type="template" href="./contrib/absolution.xml" lang="en">Absolution</link>
 			<link type="language" href="./contrib/vi.xml" lang="en">Vietnamese</link>
+			<link type="contrib" href="./contrib/update_111-112.xml" lang="en">Update: from 1.1.1 to 1.1.2</link>
 		</link-group>
 	</header>
 
 	<action-group>
-
 		<copy>
 			<file from="root/install_quick_ads.php" to="install_quick_ads.php" />
 			<file from="root/adm/style/acp_quick_ads.html" to="adm/style/acp_quick_ads.html" />
@@ -75,7 +80,7 @@
 			<file from="root/language/en/mods/info_acp_quick_ads.php" to="language/en/mods/info_acp_quick_ads.php" />
 			<file from="root/styles/prosilver/template/mods/quick_ads.html" to="styles/prosilver/template/mods/quick_ads.html" />
 			<file from="root/styles/prosilver/template/mods/jquery/closebt.png" to="styles/prosilver/template/mods/jquery/closebt.png" />
-			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" />
+			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
 
@@ -87,7 +92,6 @@
 		</open>
 		
 		<php-installer><![CDATA[install_quick_ads.php]]></php-installer>
-		<diy-instructions lang="en"><![CDATA[Do not forget to delete or rename the file "root/install_quick_ads.php" after installation (For Un-Installing, re-upload it).
-Purge the cache and go to ACP -> .MODS -> Quick Ads to setting up your Quick Ads.]]></diy-instructions>
+		<diy-instructions lang="en"><![CDATA[Delete the installer (install_quick_ads.php) after the installation.]]></diy-instructions>
 	</action-group>
 </mod>

@@ -5,9 +5,9 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Quick Ads]]></title>
-		<description lang="en"><![CDATA[Append any HTML, jQuery/JS code into your forum quickly! Very simple and useful.]]></description>
-		<author-notes lang="en"><![CDATA[]]></author-notes>
+		<title lang="en"><![CDATA[Quick Ads - Update v1.1.1 to v1.1.2]]></title>
+		<description lang="en"><![CDATA[Update instructions - v1.1.1 to v1.1.2]]></description>
+		<author-notes lang="en"><![CDATA[This update instructions applies to v1.1.1 only]]></author-notes>
 		<github><![CDATA[https://github.com/o0johntam0o/phpBB-Quick-Ads]]></github>
 		
 		<author-group>
@@ -68,16 +68,24 @@
 
 	<action-group>
 		<copy>
-			<file from="root/styles/absolution/template/mods/quick_ads.html" to="styles/absolution/template/mods/quick_ads.html" />
-			<file from="root/styles/absolution/template/mods/jquery/closebt.png" to="styles/absolution/template/mods/jquery/closebt.png" />
-			<file from="root/styles/absolution/template/mods/jquery/jquery-1.10.2.min.js" to="styles/absolution/template/mods/jquery/jquery-1.10.2.min.js" />
+			<file from="root/install_quick_ads.php" to="install_quick_ads.php" />
+			<file from="root/adm/style/acp_quick_ads.html" to="adm/style/acp_quick_ads.html" />
+			<file from="root/includes/functions_quick_ads.php" to="includes/functions_quick_ads.php" />
+			<file from="root/includes/acp/acp_quick_ads.php" to="includes/acp/acp_quick_ads.php" />
+			<file from="root/includes/acp/info/acp_quick_ads.php" to="includes/acp/info/acp_quick_ads.php" />
+			<file from="root/includes/hooks/hook_quick_ads.php" to="includes/hooks/hook_quick_ads.php" />
+			<file from="root/language/en/mods/info_acp_quick_ads.php" to="language/en/mods/info_acp_quick_ads.php" />
+			<file from="root/styles/prosilver/template/mods/quick_ads.html" to="styles/prosilver/template/mods/quick_ads.html" />
+			<file from="root/styles/prosilver/template/mods/jquery/closebt.png" to="styles/prosilver/template/mods/jquery/closebt.png" />
+			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" />
+			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
-
-		<open src="styles/absolution/template/overall_header.html">
-			<edit>
-				<find><![CDATA[<div class="noise">]]></find>
-				<action type="before-add"><![CDATA[<!-- INCLUDE mods/quick_ads.html -->]]></action>
-			</edit>
-		</open>
+		
+		<delete>
+			<file name="root/styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" />
+		</delete>
+		
+		<php-installer><![CDATA[install_quick_ads.php]]></php-installer>
+		<diy-instructions lang="en"><![CDATA[Delete the installer (install_quick_ads.php) after the installation.]]></diy-instructions>
 	</action-group>
 </mod>
