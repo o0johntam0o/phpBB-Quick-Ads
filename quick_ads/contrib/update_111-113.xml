@@ -5,8 +5,8 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Quick Ads - Update v1.1.1 to v1.1.2]]></title>
-		<description lang="en"><![CDATA[Update instructions - v1.1.1 to v1.1.2]]></description>
+		<title lang="en"><![CDATA[Quick Ads - Update v1.1.1 to v1.1.3]]></title>
+		<description lang="en"><![CDATA[Update instructions - v1.1.1 to v1.1.3]]></description>
 		<author-notes lang="en"><![CDATA[This update instructions applies to v1.1.1 only]]></author-notes>
 		<github><![CDATA[https://github.com/o0johntam0o/phpBB-Quick-Ads]]></github>
 		
@@ -17,50 +17,14 @@
 			</author>
 		</author-group>
 
-		<mod-version>1.1.2</mod-version>
+		<mod-version>1.1.3</mod-version>
 
 		<installation>
 			<level>easy</level>
 			<time>60</time>
 			<target-version>3.0.12</target-version>
 		</installation>
-
-		<history>
-			<entry>
-				<date>2013-11-06</date>
-				<rev-version>1.1.2</rev-version>
-				<changelog lang="en">
-					<change>Update jQuery to version 1.10.2</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2013-03-19</date>
-				<rev-version>1.1.1</rev-version>
-				<changelog lang="en">
-					<change>Fix: Ads displays multiple times</change>
-					<change>Change: Keep Ads hidden when user click close button</change>
-					<change>Change: Position of close button</change>
-					<change>Change: Use jQuery instead of Dollar sign</change>
-					<change>Update jQuery to version 1.9.1</change>
-					<change>Update MODX to version 1.2.6</change>
-					<change>Other minor changes</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-11-20</date>
-				<rev-version>1.1.0</rev-version>
-				<changelog lang="en">
-					<change>Release version 1.1.0</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-05-26</date>
-				<rev-version>1.0.0</rev-version>
-				<changelog lang="en">
-					<change>Starting project (phpBB 3.0.10)</change>
-				</changelog>
-			</entry>
-		</history>
+		
 		<link-group>
 			<link type="parent" href="../install.xml" lang="en">Main Install File</link>
 		</link-group>

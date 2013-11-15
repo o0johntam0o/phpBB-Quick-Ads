@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.2 of 06.11.2013
+* @version 1.1.3 of 12.11.2013
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -26,7 +26,7 @@ class acp_quick_ads_info
 		return array(
 			'filename'	=> 'acp_quick_ads',
 			'title'		=> 'QUICK_ADS_TITLE_ACP',
-			'version'	=> '1.1.2',
+			'version'	=> '1.1.3',
 			'modes'		=> array(
 				'index'	=> array(
 					'title'			=> 'QUICK_ADS_TITLE1',
