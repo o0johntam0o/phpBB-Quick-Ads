@@ -5,9 +5,9 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Quick Ads - Update v1.1.1 to v1.1.3]]></title>
-		<description lang="en"><![CDATA[Update instructions - v1.1.1 to v1.1.3]]></description>
-		<author-notes lang="en"><![CDATA[This update instructions applies to v1.1.1 only]]></author-notes>
+		<title lang="en"><![CDATA[Quick Ads - Update v1.1.3 to v1.1.4]]></title>
+		<description lang="en"><![CDATA[Update instructions - v1.1.3 to v1.1.4]]></description>
+		<author-notes lang="en"><![CDATA[This update instructions applies to v1.1.3 only]]></author-notes>
 		<github><![CDATA[https://github.com/o0johntam0o/phpBB-Quick-Ads]]></github>
 		
 		<author-group>
@@ -17,7 +17,7 @@
 			</author>
 		</author-group>
 
-		<mod-version>1.1.3</mod-version>
+		<mod-version>1.1.4</mod-version>
 
 		<installation>
 			<level>easy</level>
@@ -44,10 +44,6 @@
 			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
-		
-		<delete>
-			<file name="root/styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" />
-		</delete>
 		
 		<php-installer><![CDATA[install_quick_ads.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Delete the installer (install_quick_ads.php) after the installation.]]></diy-instructions>

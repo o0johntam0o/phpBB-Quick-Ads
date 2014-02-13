@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.1 of 19.03.2013
+* @version 1.1.4 of 13.02.2014
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -25,6 +25,8 @@ $lang = array_merge($lang, array(
 	
 	'QUICK_ADS_ENABLE'					=> 'Kích hoạt Quick Ads',
 	'QUICK_ADS_ENABLE_EXPLAIN'			=> 'Nếu bạn không kích hoạt nó, Quick Ads sẽ không hiện bất kỳ giá nào',
+	'QUICK_ADS_CUSTOM_ID'				=> 'Tùy biến ID',
+	'QUICK_ADS_CUSTOM_ID_EXPLAIN'		=> 'Chỉ được sử dụng <em style="color:#ff0000">a-z</em>, <em style="color:#ff0000">0-9</em> và <em style="color:#ff0000">dấu gạch chân</em> (Bỏ trống để sử dụng giá trị mặc định). Ví dụ: my_custom_id_123',
 	'QUICK_ADS_ZINDEX'					=> 'Z-Index (Dạng số nguyên)',
 	'QUICK_ADS_ZINDEX_EXPLAIN'			=> 'Dùng để đặt Quick Ads "bên trên" hoặc "bên dưới" các thành phần khác',
 	'QUICK_ADS_CLOSEBT'					=> 'Hiển thị nút đóng',

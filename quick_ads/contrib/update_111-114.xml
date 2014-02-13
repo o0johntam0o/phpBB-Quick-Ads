@@ -5,9 +5,9 @@
 <mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
 	<header>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[Quick Ads]]></title>
-		<description lang="en"><![CDATA[Append any HTML, jQuery/JS code into your forum quickly! Very simple and useful.]]></description>
-		<author-notes lang="en"><![CDATA[]]></author-notes>
+		<title lang="en"><![CDATA[Quick Ads - Update v1.1.1 to v1.1.4]]></title>
+		<description lang="en"><![CDATA[Update instructions - v1.1.1 to v1.1.4]]></description>
+		<author-notes lang="en"><![CDATA[This update instructions applies to v1.1.1 only]]></author-notes>
 		<github><![CDATA[https://github.com/o0johntam0o/phpBB-Quick-Ads]]></github>
 		
 		<author-group>
@@ -24,64 +24,9 @@
 			<time>60</time>
 			<target-version>3.0.12</target-version>
 		</installation>
-
-		<history>
-			<entry>
-				<date>2014-02-13</date>
-				<rev-version>1.1.4</rev-version>
-				<changelog lang="en">
-					<change>Add: Custom ID for elements (to prevent "Ads blockers")</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2013-11-12</date>
-				<rev-version>1.1.3</rev-version>
-				<changelog lang="en">
-					<change>Nothing changed in this version</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2013-11-06</date>
-				<rev-version>1.1.2</rev-version>
-				<changelog lang="en">
-					<change>Update jQuery to version 1.10.2</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2013-03-19</date>
-				<rev-version>1.1.1</rev-version>
-				<changelog lang="en">
-					<change>Fix: Ads displays multiple times</change>
-					<change>Change: Keep Ads hidden when user click close button</change>
-					<change>Change: Position of close button</change>
-					<change>Change: Use jQuery instead of Dollar sign</change>
-					<change>Update jQuery to version 1.9.1</change>
-					<change>Update MODX to version 1.2.6</change>
-					<change>Other minor changes</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-11-20</date>
-				<rev-version>1.1.0</rev-version>
-				<changelog lang="en">
-					<change>Release version 1.1.0</change>
-				</changelog>
-			</entry>
-			<entry>
-				<date>2012-05-26</date>
-				<rev-version>1.0.0</rev-version>
-				<changelog lang="en">
-					<change>Starting project (phpBB 3.0.10)</change>
-				</changelog>
-			</entry>
-		</history>
 		
 		<link-group>
-			<link type="template" href="./contrib/subsilver2.xml" lang="en">SubSilver2</link>
-			<link type="template" href="./contrib/absolution.xml" lang="en">Absolution</link>
-			<link type="language" href="./contrib/vi.xml" lang="en">Vietnamese</link>
-			<link type="contrib" href="./contrib/update_111-114.xml" lang="en">Update: from 1.1.1 to 1.1.4</link>
-			<link type="contrib" href="./contrib/update_113-114.xml" lang="en">Update: from 1.1.3 to 1.1.4</link>
+			<link type="parent" href="../install.xml" lang="en">Main Install File</link>
 		</link-group>
 	</header>
 
@@ -99,13 +44,10 @@
 			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
-
-		<open src="styles/prosilver/template/overall_header.html">
-			<edit>
-				<find><![CDATA[<div id="wrap">]]></find>
-				<action type="before-add"><![CDATA[<!-- INCLUDE mods/quick_ads.html -->]]></action>
-			</edit>
-		</open>
+		
+		<delete>
+			<file name="root/styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" />
+		</delete>
 		
 		<php-installer><![CDATA[install_quick_ads.php]]></php-installer>
 		<diy-instructions lang="en"><![CDATA[Delete the installer (install_quick_ads.php) after the installation.]]></diy-instructions>
