@@ -3,7 +3,7 @@
 	<script type="text/javascript">
 	/* <![CDATA[ */
 		if (typeof(jQuery) == 'undefined')
-			document.write('<scr'+'ipt src="{T_SUPER_TEMPLATE_PATH}/mods/jquery/jquery-1.10.2.min.js" type="text/javascript"></scr'+'ipt>');
+			document.write('<scr'+'ipt src="{T_SUPER_TEMPLATE_PATH}/mods/jquery/jquery-1.11.1.min.js" type="text/javascript"></scr'+'ipt>');
 		
 		var tmp;
 		var quickAds_frameT = '#{S_QUICK_ADS_CUSTOM_ID}t';
@@ -233,7 +233,6 @@
 					exdate.setMinutes(exdate.getMinutes() + time);
 					var c_value = escape(id) + ((time == null) ? "" : "; expires=" + exdate.toUTCString());
 					document.cookie = id + "=" + c_value;
-					document.cookie = id + "_session=" + "{S_QUICK_ADS_SESSION}";
 				}
 				<!-- ENDIF -->
 				jQuery(id).remove();
@@ -254,23 +253,6 @@
 				x = ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
 				y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
 				x = x.replace(/^\s+|\s+$/g,"");
-				
-				if (x == quickAds_frameT + "_session" && jQuery(quickAds_frameT).length > 0 && y == "{S_QUICK_ADS_SESSION}")
-				{
-					jQuery(quickAds_frameT).remove();
-				}
-				else if (x == quickAds_frameB + "_session" && (jQuery(quickAds_frameB).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
-				{
-					jQuery(quickAds_frameB).remove();
-				}
-				else if (x == quickAds_frameL + "_session" && (jQuery(quickAds_frameL).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
-				{
-					jQuery(quickAds_frameL).remove();
-				}
-				else if (x == quickAds_frameR + "_session" && (jQuery(quickAds_frameR).length > 0 && y == "{S_QUICK_ADS_SESSION}"))
-				{
-					jQuery(quickAds_frameR).remove();
-				}
 				
 				if (x == quickAds_frameT && jQuery(quickAds_frameT).length > 0)
 				{

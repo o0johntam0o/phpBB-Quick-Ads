@@ -17,7 +17,7 @@
 			</author>
 		</author-group>
 
-		<mod-version>1.1.4</mod-version>
+		<mod-version>1.1.5</mod-version>
 
 		<installation>
 			<level>easy</level>
@@ -34,7 +34,7 @@
 		<copy>
 			<file from="root/styles/subsilver2/template/mods/quick_ads.html" to="styles/subsilver2/template/mods/quick_ads.html" />
 			<file from="root/styles/subsilver2/template/mods/jquery/closebt.png" to="styles/subsilver2/template/mods/jquery/closebt.png" />
-			<file from="root/styles/subsilver2/template/mods/jquery/jquery-1.10.2.min.js" to="styles/subsilver2/template/mods/jquery/jquery-1.10.2.min.js" />
+			<file from="root/styles/subsilver2/template/mods/jquery/jquery-1.11.1.min.js" to="styles/subsilver2/template/mods/jquery/jquery-1.11.1.min.js" />
 		</copy>
 
 		<open src="styles/subsilver2/template/overall_header.html">

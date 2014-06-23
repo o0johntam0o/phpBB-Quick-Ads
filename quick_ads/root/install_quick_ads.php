@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.4 of 13.02.2014
+* @version 1.1.5 of 02.06.2014
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -50,6 +50,14 @@ $language_file = 'mods/info_acp_quick_ads';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	'1.1.5'	=> array(
+		// Update config value
+		'config_update' => array(
+			array('quick_ads_cookie', 1),
+			array('quick_ads_cookie_time', 5),
+		),
+	),
+	
 	'1.1.4'	=> array(
 		// Add config value
 		'config_add' => array(

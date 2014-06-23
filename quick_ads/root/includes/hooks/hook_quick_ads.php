@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.4 of 13.02.2014
+* @version 1.1.5 of 02.06.2014
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -130,7 +130,6 @@ function quick_ads_template_hook()
 	if ($total>0)
 	{
 		$template->assign_vars(array(
-			'S_QUICK_ADS_SESSION'			=> $user->session_id,
 			'S_QUICK_ADS_TOP'				=> ($top > 0) ? true : false,
 			'S_QUICK_ADS_BOTTOM'			=> ($bottom > 0) ? true : false,
 			'S_QUICK_ADS_LEFT'				=> ($left > 0) ? true : false,

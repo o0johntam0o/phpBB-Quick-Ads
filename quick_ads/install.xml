@@ -17,7 +17,7 @@
 			</author>
 		</author-group>
 
-		<mod-version>1.1.4</mod-version>
+		<mod-version>1.1.5</mod-version>
 
 		<installation>
 			<level>easy</level>
@@ -26,6 +26,15 @@
 		</installation>
 
 		<history>
+			<entry>
+				<date>2014-06-02</date>
+				<rev-version>1.1.5</rev-version>
+				<changelog lang="en">
+					<change>Change: The hidden frames will not depend on the session id</change>
+					<change>Update: Default value of "Enable cookie" and "Cookie time"</change>
+					<change>Update: jQuery v1.11.1</change>
+				</changelog>
+			</entry>
 			<entry>
 				<date>2014-02-13</date>
 				<rev-version>1.1.4</rev-version>
@@ -80,8 +89,9 @@
 			<link type="template" href="./contrib/subsilver2.xml" lang="en">SubSilver2</link>
 			<link type="template" href="./contrib/absolution.xml" lang="en">Absolution</link>
 			<link type="language" href="./contrib/vi.xml" lang="en">Vietnamese</link>
-			<link type="contrib" href="./contrib/update_111-114.xml" lang="en">Update: from 1.1.1 to 1.1.4</link>
-			<link type="contrib" href="./contrib/update_113-114.xml" lang="en">Update: from 1.1.3 to 1.1.4</link>
+			<link type="contrib" href="./contrib/update_111-115.xml" lang="en">Update: from 1.1.1 to 1.1.5</link>
+			<link type="contrib" href="./contrib/update_113-115.xml" lang="en">Update: from 1.1.3 to 1.1.5</link>
+			<link type="contrib" href="./contrib/update_114-115.xml" lang="en">Update: from 1.1.4 to 1.1.5</link>
 		</link-group>
 	</header>
 
@@ -96,7 +106,7 @@
 			<file from="root/language/en/mods/info_acp_quick_ads.php" to="language/en/mods/info_acp_quick_ads.php" />
 			<file from="root/styles/prosilver/template/mods/quick_ads.html" to="styles/prosilver/template/mods/quick_ads.html" />
 			<file from="root/styles/prosilver/template/mods/jquery/closebt.png" to="styles/prosilver/template/mods/jquery/closebt.png" />
-			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.10.2.min.js" />
+			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
 
