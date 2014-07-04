@@ -40,13 +40,13 @@
 			<file from="root/includes/hooks/hook_quick_ads.php" to="includes/hooks/hook_quick_ads.php" />
 			<file from="root/language/en/mods/info_acp_quick_ads.php" to="language/en/mods/info_acp_quick_ads.php" />
 			<file from="root/styles/prosilver/template/mods/quick_ads.html" to="styles/prosilver/template/mods/quick_ads.html" />
-			<file from="root/styles/prosilver/template/mods/jquery/closebt.png" to="styles/prosilver/template/mods/jquery/closebt.png" />
 			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
 		
 		<delete>
 			<file name="root/styles/prosilver/template/mods/jquery/jquery-1.9.1.min.js" />
+			<file name="root/styles/prosilver/template/mods/jquery/closebt.png" />
 		</delete>
 		
 		<php-installer><![CDATA[install_quick_ads.php]]></php-installer>

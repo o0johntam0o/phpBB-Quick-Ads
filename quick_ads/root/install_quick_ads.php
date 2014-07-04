@@ -51,6 +51,10 @@ $language_file = 'mods/info_acp_quick_ads';
 */
 $versions = array(
 	'1.1.5'	=> array(
+		// Add config value
+		'config_add' => array(
+			array('quick_ads_allow_bot', 0),
+		),
 		// Update config value
 		'config_update' => array(
 			array('quick_ads_cookie', 1),

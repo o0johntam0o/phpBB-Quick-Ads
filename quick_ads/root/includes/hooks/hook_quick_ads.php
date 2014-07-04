@@ -135,6 +135,7 @@ function quick_ads_template_hook()
 			'S_QUICK_ADS_LEFT'				=> ($left > 0) ? true : false,
 			'S_QUICK_ADS_RIGHT'				=> ($right > 0) ? true : false,
 			'S_QUICK_ADS_AVAILABLE'			=> isset($config['quick_ads_enable']) ? $config['quick_ads_enable'] : false,
+			'S_QUICK_ADS_ALLOW_BOT'			=> isset($config['quick_ads_allow_bot']) ? $config['quick_ads_allow_bot'] : false,
 			'S_QUICK_ADS_CUSTOM_ID'			=> isset($config['quick_ads_custom_id']) ? $config['quick_ads_custom_id'] : 'quick_ads_',
 			'S_QUICK_ADS_ZINDEX'			=> isset($config['quick_ads_zindex']) ? $config['quick_ads_zindex'] : 0,
 			'S_QUICK_ADS_CLOSEBT'			=> isset($config['quick_ads_closebt']) ? $config['quick_ads_closebt'] : false,

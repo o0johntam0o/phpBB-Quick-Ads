@@ -1,5 +1,5 @@
-<!-- IF not S_IS_BOT -->
 <!-- IF S_QUICK_ADS_AVAILABLE -->
+<!-- IF (S_IS_BOT and S_QUICK_ADS_ALLOW_BOT) or not S_IS_BOT -->
 	<script type="text/javascript">
 	/* <![CDATA[ */
 		if (typeof(jQuery) == 'undefined')
@@ -63,56 +63,13 @@
 			{
 				var selfHeight, windowHeight, scrollTop, scrollLeft;
 				
-				if (pos == 'left')
-				{
-					if (jQuery(quickAds_frameL).length > 0)
-					{
-						jQuery(quickAds_frameL).css({'display':'block'});
-					}
-					else
-					{
-						return;
-					}
-				}
-				if (pos == 'right')
-				{
-					if (jQuery(quickAds_frameR).length > 0)
-					{
-						jQuery(quickAds_frameR).css({'display':'block'});
-					}
-					else
-					{
-						return;
-					}
-				}
-				if (pos == 'top')
-				{
-					if (jQuery(quickAds_frameT).length > 0)
-					{
-						jQuery(quickAds_frameT).css({'display':'block'});
-					}
-					else
-					{
-						return;
-					}
-				}
-				if (pos == 'bottom')
-				{
-					if (jQuery(quickAds_frameB).length > 0)
-					{
-						jQuery(quickAds_frameB).css({'display':'block'});
-					}
-					else
-					{
-						return;
-					}
-				}
+				id.css({'display':'block'});
 				
 				jQuery(window).scroll(function()
 				{
-					if (jQuery(id).length > 0 && jQuery(id).width() != 0)
+					if (id.width() != 0)
 					{
-						selfHeight = jQuery(id).height();
+						selfHeight = id.height();
 						windowHeight = jQuery(window).height();
 						scrollTop = jQuery(window).scrollTop();
 						scrollLeft = jQuery(window).scrollLeft();
@@ -120,27 +77,27 @@
 						{
 							if (selfHeight <= windowHeight)
 							{
-								jQuery(id).animate({top:scrollTop+5}, {duration:800,queue:false});
+								id.animate({top:scrollTop+5}, {duration:800,queue:false});
 							}
 							else
 							{
 								if (selfHeight <= windowHeight + scrollTop)
 								{
 									tmp = windowHeight - selfHeight + scrollTop;
-									jQuery(id).animate({top:tmp}, {duration:800,queue:false});
+									id.animate({top:tmp}, {duration:800,queue:false});
 								}
 								else
 								{
-									jQuery(id).animate({top:5}, {duration:800,queue:false});
+									id.animate({top:5}, {duration:800,queue:false});
 								}
 							}
 							if (pos == 'left')
 							{
-								jQuery(id).css({'left':5+scrollLeft});
+								id.css({'left':5+scrollLeft});
 							}
 							else
 							{
-								jQuery(id).css({'right':5-scrollLeft});
+								id.css({'right':5-scrollLeft});
 							}
 						}
 						else if (pos == 'top' || pos == 'bottom')
@@ -149,11 +106,11 @@
 							
 							if (pos == 'top')
 							{
-								jQuery(id).animate({top:scrollTop+5}, {duration:800,queue:false});
+								id.animate({top:scrollTop+5}, {duration:800,queue:false});
 							}
 							else
 							{
-								jQuery(id).animate({bottom:5-scrollTop}, {duration:800,queue:false});
+								id.animate({bottom:5-scrollTop}, {duration:800,queue:false});
 							}
 						}
 					}
@@ -161,32 +118,28 @@
 			
 				jQuery(window).resize(function()
 				{
-					if (jQuery(id).length > 0)
+					scrollLeft = jQuery(window).scrollLeft();
+					
+					if (pos == 'left' || pos == 'right')
 					{
-						scrollLeft = jQuery(window).scrollLeft();
-						
-						if (pos == 'left' || pos == 'right')
+						if (pos == 'left')
 						{
-							if (pos == 'left')
-							{
-								jQuery(id).css({'left':5+scrollLeft});
-							}
-							else
-							{
-								jQuery(id).css({'right':5-scrollLeft});
-							}
+							id.css({'left':5+scrollLeft});
 						}
-						else if (pos == 'top' || pos == 'bottom')
+						else
 						{
-							quickAds_preSetPos();
+							id.css({'right':5-scrollLeft});
 						}
+					}
+					else if (pos == 'top' || pos == 'bottom')
+					{
+						quickAds_preSetPos();
 					}
 				});
 			}
 			else
 			{
-				// Some command...
-				// alert("Error!");
+				id.css({'display':'none'});
 			}
 		}
 		
@@ -217,8 +170,7 @@
 			}
 			else
 			{
-				// Some command...
-				// alert("Error!");
+				jQuery(id).css({'display':'none'});
 			}
 		}
 		
@@ -276,9 +228,9 @@
 	</script>
 	
 	<!-- IF S_QUICK_ADS_LEFT -->
-	<div id="{S_QUICK_ADS_CUSTOM_ID}l" style="display:none; position:absolute; top:5px; left:5px; z-index:{S_QUICK_ADS_ZINDEX};">
+	<div id="{S_QUICK_ADS_CUSTOM_ID}l" style="<!-- IF not S_IS_BOT -->display:none; <!-- ENDIF -->position:absolute; top:5px; left:5px; z-index:{S_QUICK_ADS_ZINDEX};">
 		<!-- IF S_QUICK_ADS_CLOSEBT -->
-		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}l', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; text-align: center; cursor:pointer; background: #ffffff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfElEQVR42o1UWUycVRT+h2FmYJZ/mBmW6VAJAsNaW0qlTEEFCkKBNqytoRUeSEpTH9QHZEukfSBRSdiKJVBjasACUhY1AoPWIRUVA5FIokApCcaySYkQiEDZPu89BGIMD/7JyX/vud/5znbPFba3t8G/xcVFdHZ2oq2tDR0dHSTt7e0H68N0HNt6vxVTU1PEwbkEvng8MYHS0lIUFRWhoKAA+fn59Of74uJiFBYWkvA1l/9iSkpKMDg4SKTC32trePPtt3AuIQEZly4iNT0NaenpSE1Lw6txcYiJiUFiYiKSkpIQGxuLGCbJKSlIz0gnbMbFDJy/cB6vZ2Vhbn4Owg8DPyL85ZdgCT+DV6IiERkdhbAzFpy2hOHdGyUYGBjA7yylJ388wcjICKpuVSPqbDRCQk8RlttEMPuTp0LQ8GkjhAe2bxAccgLmAF8EHg+Cj6+ZCHkKS0tLaLzXiPziAuQVvoM7H3+Ep08XMD09jZS0VHh6P4/AE0HwD/KHr78ZtXW1EL5+0Auznw9MHia4HjXCx8+MicnH6Hv4EEeOukOmVEA0aKExiHAUldDqdbjX3Iy19TWKVOdmgIeXB0zuRtyurYHQ09sN9+dM0LvoIZVL0fxZM0bHRuGgdEBKegqCjgdCdNLA2c0ZRmZ0JesK7BUyfNXTjTGGU4sqstXqRFTXVDFCazfcjrhCKpOydL2xvrGO+IRzsLOTYPiXn/Hb6K/QO+sgSATcb2vF/J9zMLgY4GX2wc7ODpIuJELCsBqtGhVV5YyQeTIajRAEAdnZ2Zifn4coilAoFKSfeDSB/v5+3P3kLhYWFhAQ4A+5XA6JhDkcHkZFRTnZakQNKiorOGHPAWFeXh7Gx8chlUqh0WhIZzKZ8GzjGd0xi8VCOr1eT/+uri40NDTQWq1Wo7KyEoK1xwqjqxspc69exezMDJRKJRzkCtixKJqamjA6OkpdHxoagoGRKWQsQkGC77/rR031rb0IVWpUVTDC3u4euDq7kDIk+CRFEhYWRil9+fkXWFlZgZe3F7RaLSYnJ1kJHkHnpINO64RVdvZaxiWyVTkqUV3JmmJlhM56w0FEP7GLbOuzEejmjZs4/WIoi0aATGoPHy9vfPDe+3RWVlZG2ahVKrLlshchS9nF4AxHhQOkdlIEBwdjc3MTt2s+JEMu3BGX/f213GuUSSIbV0pXqaYyUIQ9Xd1EKLeXUdgcEBN9lqZkbGwM19+4jjA2hqGhocjMzITNZsMam//LmZcPUuXB8Agry1mX+761sUIbyANXqpUqAnp6eqK+vh4zLK3l5WUs/bWE2dlZtLS04IVjx/Y6yxrBbZQOjmRfe5uNHvfGvXOAViOSR1GtgZzVjIyYA7O3D/zMvnAStaSTSuwIo1LuYe3Ynl89PuMCv+1Wq5U6t1+jfeE1/T86mUyGuro67O7uQlhdXaXp4C9wbm4uUlJTER8fj8jISIRHRNBl/reEh4fTWRx7K5OTk5GTk4PGxkYqB79i9GJz5sO+ra0tbGxsUBO48DXXHfbtc/wDGsZrYtEGr0kAAAAASUVORK5CYII=) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}l', {S_QUICK_ADS_COOKIE_TIME});">X</div>
 		<!-- ENDIF -->
 		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
 			<tbody>
@@ -316,9 +268,9 @@
 	<!-- ENDIF -->
 	
 	<!-- IF S_QUICK_ADS_RIGHT -->
-	<div id="{S_QUICK_ADS_CUSTOM_ID}r" style="display:none; position:absolute; top:5px; right:5px; z-index:{S_QUICK_ADS_ZINDEX};">
+	<div id="{S_QUICK_ADS_CUSTOM_ID}r" style="<!-- IF not S_IS_BOT -->display:none; <!-- ENDIF -->position:absolute; top:5px; right:5px; z-index:{S_QUICK_ADS_ZINDEX};">
 		<!-- IF S_QUICK_ADS_CLOSEBT -->
-		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}r', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; text-align: center; cursor:pointer; background: #ffffff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfElEQVR42o1UWUycVRT+h2FmYJZ/mBmW6VAJAsNaW0qlTEEFCkKBNqytoRUeSEpTH9QHZEukfSBRSdiKJVBjasACUhY1AoPWIRUVA5FIokApCcaySYkQiEDZPu89BGIMD/7JyX/vud/5znbPFba3t8G/xcVFdHZ2oq2tDR0dHSTt7e0H68N0HNt6vxVTU1PEwbkEvng8MYHS0lIUFRWhoKAA+fn59Of74uJiFBYWkvA1l/9iSkpKMDg4SKTC32trePPtt3AuIQEZly4iNT0NaenpSE1Lw6txcYiJiUFiYiKSkpIQGxuLGCbJKSlIz0gnbMbFDJy/cB6vZ2Vhbn4Owg8DPyL85ZdgCT+DV6IiERkdhbAzFpy2hOHdGyUYGBjA7yylJ388wcjICKpuVSPqbDRCQk8RlttEMPuTp0LQ8GkjhAe2bxAccgLmAF8EHg+Cj6+ZCHkKS0tLaLzXiPziAuQVvoM7H3+Ep08XMD09jZS0VHh6P4/AE0HwD/KHr78ZtXW1EL5+0Auznw9MHia4HjXCx8+MicnH6Hv4EEeOukOmVEA0aKExiHAUldDqdbjX3Iy19TWKVOdmgIeXB0zuRtyurYHQ09sN9+dM0LvoIZVL0fxZM0bHRuGgdEBKegqCjgdCdNLA2c0ZRmZ0JesK7BUyfNXTjTGGU4sqstXqRFTXVDFCazfcjrhCKpOydL2xvrGO+IRzsLOTYPiXn/Hb6K/QO+sgSATcb2vF/J9zMLgY4GX2wc7ODpIuJELCsBqtGhVV5YyQeTIajRAEAdnZ2Zifn4coilAoFKSfeDSB/v5+3P3kLhYWFhAQ4A+5XA6JhDkcHkZFRTnZakQNKiorOGHPAWFeXh7Gx8chlUqh0WhIZzKZ8GzjGd0xi8VCOr1eT/+uri40NDTQWq1Wo7KyEoK1xwqjqxspc69exezMDJRKJRzkCtixKJqamjA6OkpdHxoagoGRKWQsQkGC77/rR031rb0IVWpUVTDC3u4euDq7kDIk+CRFEhYWRil9+fkXWFlZgZe3F7RaLSYnJ1kJHkHnpINO64RVdvZaxiWyVTkqUV3JmmJlhM56w0FEP7GLbOuzEejmjZs4/WIoi0aATGoPHy9vfPDe+3RWVlZG2ahVKrLlshchS9nF4AxHhQOkdlIEBwdjc3MTt2s+JEMu3BGX/f213GuUSSIbV0pXqaYyUIQ9Xd1EKLeXUdgcEBN9lqZkbGwM19+4jjA2hqGhocjMzITNZsMam//LmZcPUuXB8Agry1mX+761sUIbyANXqpUqAnp6eqK+vh4zLK3l5WUs/bWE2dlZtLS04IVjx/Y6yxrBbZQOjmRfe5uNHvfGvXOAViOSR1GtgZzVjIyYA7O3D/zMvnAStaSTSuwIo1LuYe3Ynl89PuMCv+1Wq5U6t1+jfeE1/T86mUyGuro67O7uQlhdXaXp4C9wbm4uUlJTER8fj8jISIRHRNBl/reEh4fTWRx7K5OTk5GTk4PGxkYqB79i9GJz5sO+ra0tbGxsUBO48DXXHfbtc/wDGsZrYtEGr0kAAAAASUVORK5CYII=) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}r', {S_QUICK_ADS_COOKIE_TIME});">X</div>
 		<!-- ENDIF -->
 		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
 			<tbody>
@@ -356,9 +308,9 @@
 	<!-- ENDIF -->
 	
 	<!-- IF S_QUICK_ADS_TOP -->
-	<div id="{S_QUICK_ADS_CUSTOM_ID}t" style="display:none; position:absolute; top:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
+	<div id="{S_QUICK_ADS_CUSTOM_ID}t" style="<!-- IF not S_IS_BOT -->display:none; <!-- ENDIF -->position:absolute; top:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
 		<!-- IF S_QUICK_ADS_CLOSEBT -->
-		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}t', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; text-align: center; cursor:pointer; background: #ffffff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfElEQVR42o1UWUycVRT+h2FmYJZ/mBmW6VAJAsNaW0qlTEEFCkKBNqytoRUeSEpTH9QHZEukfSBRSdiKJVBjasACUhY1AoPWIRUVA5FIokApCcaySYkQiEDZPu89BGIMD/7JyX/vud/5znbPFba3t8G/xcVFdHZ2oq2tDR0dHSTt7e0H68N0HNt6vxVTU1PEwbkEvng8MYHS0lIUFRWhoKAA+fn59Of74uJiFBYWkvA1l/9iSkpKMDg4SKTC32trePPtt3AuIQEZly4iNT0NaenpSE1Lw6txcYiJiUFiYiKSkpIQGxuLGCbJKSlIz0gnbMbFDJy/cB6vZ2Vhbn4Owg8DPyL85ZdgCT+DV6IiERkdhbAzFpy2hOHdGyUYGBjA7yylJ388wcjICKpuVSPqbDRCQk8RlttEMPuTp0LQ8GkjhAe2bxAccgLmAF8EHg+Cj6+ZCHkKS0tLaLzXiPziAuQVvoM7H3+Ep08XMD09jZS0VHh6P4/AE0HwD/KHr78ZtXW1EL5+0Auznw9MHia4HjXCx8+MicnH6Hv4EEeOukOmVEA0aKExiHAUldDqdbjX3Iy19TWKVOdmgIeXB0zuRtyurYHQ09sN9+dM0LvoIZVL0fxZM0bHRuGgdEBKegqCjgdCdNLA2c0ZRmZ0JesK7BUyfNXTjTGGU4sqstXqRFTXVDFCazfcjrhCKpOydL2xvrGO+IRzsLOTYPiXn/Hb6K/QO+sgSATcb2vF/J9zMLgY4GX2wc7ODpIuJELCsBqtGhVV5YyQeTIajRAEAdnZ2Zifn4coilAoFKSfeDSB/v5+3P3kLhYWFhAQ4A+5XA6JhDkcHkZFRTnZakQNKiorOGHPAWFeXh7Gx8chlUqh0WhIZzKZ8GzjGd0xi8VCOr1eT/+uri40NDTQWq1Wo7KyEoK1xwqjqxspc69exezMDJRKJRzkCtixKJqamjA6OkpdHxoagoGRKWQsQkGC77/rR031rb0IVWpUVTDC3u4euDq7kDIk+CRFEhYWRil9+fkXWFlZgZe3F7RaLSYnJ1kJHkHnpINO64RVdvZaxiWyVTkqUV3JmmJlhM56w0FEP7GLbOuzEejmjZs4/WIoi0aATGoPHy9vfPDe+3RWVlZG2ahVKrLlshchS9nF4AxHhQOkdlIEBwdjc3MTt2s+JEMu3BGX/f213GuUSSIbV0pXqaYyUIQ9Xd1EKLeXUdgcEBN9lqZkbGwM19+4jjA2hqGhocjMzITNZsMam//LmZcPUuXB8Agry1mX+761sUIbyANXqpUqAnp6eqK+vh4zLK3l5WUs/bWE2dlZtLS04IVjx/Y6yxrBbZQOjmRfe5uNHvfGvXOAViOSR1GtgZzVjIyYA7O3D/zMvnAStaSTSuwIo1LuYe3Ynl89PuMCv+1Wq5U6t1+jfeE1/T86mUyGuro67O7uQlhdXaXp4C9wbm4uUlJTER8fj8jISIRHRNBl/reEh4fTWRx7K5OTk5GTk4PGxkYqB79i9GJz5sO+ra0tbGxsUBO48DXXHfbtc/wDGsZrYtEGr0kAAAAASUVORK5CYII=) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}t', {S_QUICK_ADS_COOKIE_TIME});">X</div>
 		<!-- ENDIF -->
 		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
 			<tbody>
@@ -396,9 +348,9 @@
 	<!-- ENDIF -->
 	
 	<!-- IF S_QUICK_ADS_BOTTOM -->
-	<div id="{S_QUICK_ADS_CUSTOM_ID}b" style="display:none; position:absolute; bottom:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
+	<div id="{S_QUICK_ADS_CUSTOM_ID}b" style="<!-- IF not S_IS_BOT -->display:none; <!-- ENDIF -->position:absolute; bottom:5px; z-index:{S_QUICK_ADS_ZINDEX}; max-width:100px; overflow:auto;">
 		<!-- IF S_QUICK_ADS_CLOSEBT -->
-		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; cursor:pointer; background: #ffffff url({T_SUPER_TEMPLATE_PATH}/mods/jquery/closebt.png) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}b', {S_QUICK_ADS_COOKIE_TIME});"></div>
+		<div style="position:absolute; width:20px; min-width:20px; height:20px; min-height:20px; border: 1px solid #c3c3c3; text-align: center; cursor:pointer; background: #ffffff url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAEfElEQVR42o1UWUycVRT+h2FmYJZ/mBmW6VAJAsNaW0qlTEEFCkKBNqytoRUeSEpTH9QHZEukfSBRSdiKJVBjasACUhY1AoPWIRUVA5FIokApCcaySYkQiEDZPu89BGIMD/7JyX/vud/5znbPFba3t8G/xcVFdHZ2oq2tDR0dHSTt7e0H68N0HNt6vxVTU1PEwbkEvng8MYHS0lIUFRWhoKAA+fn59Of74uJiFBYWkvA1l/9iSkpKMDg4SKTC32trePPtt3AuIQEZly4iNT0NaenpSE1Lw6txcYiJiUFiYiKSkpIQGxuLGCbJKSlIz0gnbMbFDJy/cB6vZ2Vhbn4Owg8DPyL85ZdgCT+DV6IiERkdhbAzFpy2hOHdGyUYGBjA7yylJ388wcjICKpuVSPqbDRCQk8RlttEMPuTp0LQ8GkjhAe2bxAccgLmAF8EHg+Cj6+ZCHkKS0tLaLzXiPziAuQVvoM7H3+Ep08XMD09jZS0VHh6P4/AE0HwD/KHr78ZtXW1EL5+0Auznw9MHia4HjXCx8+MicnH6Hv4EEeOukOmVEA0aKExiHAUldDqdbjX3Iy19TWKVOdmgIeXB0zuRtyurYHQ09sN9+dM0LvoIZVL0fxZM0bHRuGgdEBKegqCjgdCdNLA2c0ZRmZ0JesK7BUyfNXTjTGGU4sqstXqRFTXVDFCazfcjrhCKpOydL2xvrGO+IRzsLOTYPiXn/Hb6K/QO+sgSATcb2vF/J9zMLgY4GX2wc7ODpIuJELCsBqtGhVV5YyQeTIajRAEAdnZ2Zifn4coilAoFKSfeDSB/v5+3P3kLhYWFhAQ4A+5XA6JhDkcHkZFRTnZakQNKiorOGHPAWFeXh7Gx8chlUqh0WhIZzKZ8GzjGd0xi8VCOr1eT/+uri40NDTQWq1Wo7KyEoK1xwqjqxspc69exezMDJRKJRzkCtixKJqamjA6OkpdHxoagoGRKWQsQkGC77/rR031rb0IVWpUVTDC3u4euDq7kDIk+CRFEhYWRil9+fkXWFlZgZe3F7RaLSYnJ1kJHkHnpINO64RVdvZaxiWyVTkqUV3JmmJlhM56w0FEP7GLbOuzEejmjZs4/WIoi0aATGoPHy9vfPDe+3RWVlZG2ahVKrLlshchS9nF4AxHhQOkdlIEBwdjc3MTt2s+JEMu3BGX/f213GuUSSIbV0pXqaYyUIQ9Xd1EKLeXUdgcEBN9lqZkbGwM19+4jjA2hqGhocjMzITNZsMam//LmZcPUuXB8Agry1mX+761sUIbyANXqpUqAnp6eqK+vh4zLK3l5WUs/bWE2dlZtLS04IVjx/Y6yxrBbZQOjmRfe5uNHvfGvXOAViOSR1GtgZzVjIyYA7O3D/zMvnAStaSTSuwIo1LuYe3Ynl89PuMCv+1Wq5U6t1+jfeE1/T86mUyGuro67O7uQlhdXaXp4C9wbm4uUlJTER8fj8jISIRHRNBl/reEh4fTWRx7K5OTk5GTk4PGxkYqB79i9GJz5sO+ra0tbGxsUBO48DXXHfbtc/wDGsZrYtEGr0kAAAAASUVORK5CYII=) no-repeat top left;" onclick="quickAds_Close('#{S_QUICK_ADS_CUSTOM_ID}b', {S_QUICK_ADS_COOKIE_TIME});">X</div>
 		<!-- ENDIF -->
 		<table cellspacing="0" cellpadding="0" border="0" style="border:1px solid #c3c3c3; border-collapse:collapse;">
 			<tbody>

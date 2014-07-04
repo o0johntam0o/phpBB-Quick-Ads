@@ -33,7 +33,6 @@
 	<action-group>
 		<copy>
 			<file from="root/styles/subsilver2/template/mods/quick_ads.html" to="styles/subsilver2/template/mods/quick_ads.html" />
-			<file from="root/styles/subsilver2/template/mods/jquery/closebt.png" to="styles/subsilver2/template/mods/jquery/closebt.png" />
 			<file from="root/styles/subsilver2/template/mods/jquery/jquery-1.11.1.min.js" to="styles/subsilver2/template/mods/jquery/jquery-1.11.1.min.js" />
 		</copy>
 

@@ -2,7 +2,7 @@
 /**
 *
 * @package Quick Ads
-* @version 1.1.4 of 13.02.2014
+* @version 1.1.5 of 02.06.2014
 * @copyright (c) 2012 o0johntam0o - o0johntam0o@gmail.com
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
 *
@@ -67,6 +67,9 @@ class acp_quick_ads
 			{
 				$quick_ads_enable		= request_var('quick_ads_enable', 0);
 				set_config('quick_ads_enable', $quick_ads_enable);
+				
+				$quick_ads_allow_bot	= request_var('quick_ads_allow_bot', 0);
+				set_config('quick_ads_allow_bot', $quick_ads_allow_bot);
 				
 				$quick_ads_custom_id	= request_var('quick_ads_custom_id', '');
 				set_config('quick_ads_custom_id', $quick_ads_custom_id);
@@ -177,6 +180,7 @@ class acp_quick_ads
 			$template->assign_vars(array(
 				'S_QUICK_ADS_ACP_INDEX'		=> true,
 				'S_QUICK_ADS_ENABLE'		=> isset($config['quick_ads_enable']) ? $config['quick_ads_enable'] : false,
+				'S_QUICK_ADS_ALLOW_BOT'		=> isset($config['quick_ads_allow_bot']) ? $config['quick_ads_allow_bot'] : false,
 				'S_QUICK_ADS_CUSTOM_ID'		=> isset($config['quick_ads_custom_id']) ? $config['quick_ads_custom_id'] : '',
 				'S_QUICK_ADS_ZINDEX'		=> isset($config['quick_ads_zindex']) ? $config['quick_ads_zindex'] : 0,
 				'S_QUICK_ADS_CLOSEBT'		=> isset($config['quick_ads_closebt']) ? $config['quick_ads_closebt'] : false,

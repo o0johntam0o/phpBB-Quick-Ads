@@ -23,6 +23,15 @@
 			</dd>
 		</dl>
 		<dl>
+			<dt><label>{L_QUICK_ADS_ALLOW_BOT}:</label><br /><span>{L_QUICK_ADS_ALLOW_BOT_EXPLAIN}</span></dt>
+			<dd>
+				<input type="radio" class="radio" name="quick_ads_allow_bot" value="1" id="quick_ads_allow_bot_yes"<!-- IF S_QUICK_ADS_ALLOW_BOT --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_allow_bot_yes"> {L_YES}</label>
+				<input type="radio" class="radio" name="quick_ads_allow_bot" value="0" id="quick_ads_allow_bot_no"<!-- IF not S_QUICK_ADS_ALLOW_BOT --> checked="checked"<!-- ENDIF --> />
+				<label for="quick_ads_allow_bot_no"> {L_NO}</label>
+			</dd>
+		</dl>
+		<dl>
 			<dt><label for="quick_ads_custom_id">{L_QUICK_ADS_CUSTOM_ID}:</label><br /><span>{L_QUICK_ADS_CUSTOM_ID_EXPLAIN}</span></dt>
 			<dd>
 				<input type="text" maxlength="50" size="30" name="quick_ads_custom_id" value="{S_QUICK_ADS_CUSTOM_ID}" id="quick_ads_custom_id" />

@@ -30,7 +30,9 @@
 				<date>2014-06-02</date>
 				<rev-version>1.1.5</rev-version>
 				<changelog lang="en">
+					<change>Add: "Allow bots" option</change>
 					<change>Change: The hidden frames will not depend on the session id</change>
+					<change>Change: Use binary image instead (closebt.png)</change>
 					<change>Update: Default value of "Enable cookie" and "Cookie time"</change>
 					<change>Update: jQuery v1.11.1</change>
 				</changelog>
@@ -105,7 +107,6 @@
 			<file from="root/includes/hooks/hook_quick_ads.php" to="includes/hooks/hook_quick_ads.php" />
 			<file from="root/language/en/mods/info_acp_quick_ads.php" to="language/en/mods/info_acp_quick_ads.php" />
 			<file from="root/styles/prosilver/template/mods/quick_ads.html" to="styles/prosilver/template/mods/quick_ads.html" />
-			<file from="root/styles/prosilver/template/mods/jquery/closebt.png" to="styles/prosilver/template/mods/jquery/closebt.png" />
 			<file from="root/styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" to="styles/prosilver/template/mods/jquery/jquery-1.11.1.min.js" />
 			<file from="root/umil/*.*" to="umil/*.*" />
 		</copy>
