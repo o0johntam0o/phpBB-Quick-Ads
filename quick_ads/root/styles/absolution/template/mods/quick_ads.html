@@ -11,7 +11,7 @@
 		var quickAds_frameL = '#{S_QUICK_ADS_CUSTOM_ID}l';
 		var quickAds_frameR = '#{S_QUICK_ADS_CUSTOM_ID}r';
 		
-		function quickAds_preSetPos()
+		function quickAds_SetPos()
 		{
 			var marginT = 0, marginB = 0;
 			tmp = jQuery(window).width();
@@ -57,19 +57,19 @@
 			}
 		}
 		
-		function quickAds_setPos(id, pos)
+		function quickAds_Scroll(el, pos)
 		{
-			if (id.length > 0)
+			if (el.length > 0)
 			{
 				var selfHeight, windowHeight, scrollTop, scrollLeft;
 				
-				id.css({'display':'block'});
+				el.css({'display':'block'});
 				
 				jQuery(window).scroll(function()
 				{
-					if (id.width() != 0)
+					if (el.width() != 0)
 					{
-						selfHeight = id.height();
+						selfHeight = el.height();
 						windowHeight = jQuery(window).height();
 						scrollTop = jQuery(window).scrollTop();
 						scrollLeft = jQuery(window).scrollLeft();
@@ -77,40 +77,40 @@
 						{
 							if (selfHeight <= windowHeight)
 							{
-								id.animate({top:scrollTop+5}, {duration:800,queue:false});
+								el.animate({top:scrollTop+5}, {duration:800,queue:false});
 							}
 							else
 							{
 								if (selfHeight <= windowHeight + scrollTop)
 								{
 									tmp = windowHeight - selfHeight + scrollTop;
-									id.animate({top:tmp}, {duration:800,queue:false});
+									el.animate({top:tmp}, {duration:800,queue:false});
 								}
 								else
 								{
-									id.animate({top:5}, {duration:800,queue:false});
+									el.animate({top:5}, {duration:800,queue:false});
 								}
 							}
 							if (pos == 'left')
 							{
-								id.css({'left':5+scrollLeft});
+								el.css({'left':5+scrollLeft});
 							}
 							else
 							{
-								id.css({'right':5-scrollLeft});
+								el.css({'right':5-scrollLeft});
 							}
 						}
 						else if (pos == 'top' || pos == 'bottom')
 						{
-							quickAds_preSetPos();
+							quickAds_SetPos();
 							
 							if (pos == 'top')
 							{
-								id.animate({top:scrollTop+5}, {duration:800,queue:false});
+								el.animate({top:scrollTop+5}, {duration:800,queue:false});
 							}
 							else
 							{
-								id.animate({bottom:5-scrollTop}, {duration:800,queue:false});
+								el.animate({bottom:5-scrollTop}, {duration:800,queue:false});
 							}
 						}
 					}
@@ -124,26 +124,26 @@
 					{
 						if (pos == 'left')
 						{
-							id.css({'left':5+scrollLeft});
+							el.css({'left':5+scrollLeft});
 						}
 						else
 						{
-							id.css({'right':5-scrollLeft});
+							el.css({'right':5-scrollLeft});
 						}
 					}
 					else if (pos == 'top' || pos == 'bottom')
 					{
-						quickAds_preSetPos();
+						quickAds_SetPos();
 					}
 				});
 			}
 			else
 			{
-				id.css({'display':'none'});
+				el.css({'display':'none'});
 			}
 		}
 		
-		function quickAds_checkDimension(id, wmin, hmin)
+		function quickAds_CheckDimension(id, wmin, hmin)
 		{
 			if (jQuery(id).length > 0)
 			{
@@ -179,7 +179,7 @@
 			if (jQuery(id).length > 0)
 			{
 				<!-- IF S_QUICK_ADS_COOKIE -->
-				if (time>0)
+				if (time > 0)
 				{
 					var exdate = new Date();
 					exdate.setMinutes(exdate.getMinutes() + time);
@@ -188,7 +188,7 @@
 				}
 				<!-- ENDIF -->
 				jQuery(id).remove();
-				quickAds_preSetPos();
+				quickAds_SetPos();
 			}
 			else
 			{
@@ -197,7 +197,7 @@
 			}
 		}
 		
-		function quickAds_CheckCookie()
+		function quickAds_CheckCookie(id)
 		{
 			var i, x, y, ARRcookies = document.cookie.split(";");
 			for (i=0; i<ARRcookies.length; i++)
@@ -206,21 +206,9 @@
 				y = ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
 				x = x.replace(/^\s+|\s+$/g,"");
 				
-				if (x == quickAds_frameT && jQuery(quickAds_frameT).length > 0)
+				if (x == id && jQuery(id).length > 0)
 				{
-					jQuery(quickAds_frameT).remove();
-				}
-				else if (x == quickAds_frameB && jQuery(quickAds_frameB).length > 0)
-				{
-					jQuery(quickAds_frameB).remove();
-				}
-				else if (x == quickAds_frameL && jQuery(quickAds_frameL).length > 0)
-				{
-					jQuery(quickAds_frameL).remove();
-				}
-				else if (x == quickAds_frameR && jQuery(quickAds_frameR).length > 0)
-				{
-					jQuery(quickAds_frameR).remove();
+					jQuery(id).remove();
 				}
 			}
 		}
@@ -262,7 +250,7 @@
 	</div>
 	<script type="text/javascript">
 	/* <![CDATA[ */
-		quickAds_checkDimension(quickAds_frameL, {S_QUICK_ADS_WMIN_LEFT}, {S_QUICK_ADS_HMIN_LEFT});
+		quickAds_CheckDimension(quickAds_frameL, {S_QUICK_ADS_WMIN_LEFT}, {S_QUICK_ADS_HMIN_LEFT});
 	/* ]]> */
 	</script>
 	<!-- ENDIF -->
@@ -302,7 +290,7 @@
 	</div>
 	<script type="text/javascript">
 	/* <![CDATA[ */
-		quickAds_checkDimension(quickAds_frameR, {S_QUICK_ADS_WMIN_RIGHT}, {S_QUICK_ADS_HMIN_RIGHT});
+		quickAds_CheckDimension(quickAds_frameR, {S_QUICK_ADS_WMIN_RIGHT}, {S_QUICK_ADS_HMIN_RIGHT});
 	/* ]]> */
 	</script>
 	<!-- ENDIF -->
@@ -342,7 +330,7 @@
 	</div>
 	<script type="text/javascript">
 	/* <![CDATA[ */
-		quickAds_checkDimension(quickAds_frameT, {S_QUICK_ADS_WMIN_TOP}, {S_QUICK_ADS_HMIN_TOP});
+		quickAds_CheckDimension(quickAds_frameT, {S_QUICK_ADS_WMIN_TOP}, {S_QUICK_ADS_HMIN_TOP});
 	/* ]]> */
 	</script>
 	<!-- ENDIF -->
@@ -382,7 +370,7 @@
 	</div>
 	<script type="text/javascript">
 	/* <![CDATA[ */
-		quickAds_checkDimension(quickAds_frameB, {S_QUICK_ADS_WMIN_BOTTOM}, {S_QUICK_ADS_HMIN_BOTTOM});
+		quickAds_CheckDimension(quickAds_frameB, {S_QUICK_ADS_WMIN_BOTTOM}, {S_QUICK_ADS_HMIN_BOTTOM});
 	/* ]]> */
 	</script>
 	<!-- ENDIF -->
@@ -392,13 +380,16 @@
 		jQuery(document).ready(function()
 		{
 			<!-- IF S_QUICK_ADS_COOKIE -->
-			quickAds_CheckCookie();
+			quickAds_CheckCookie(quickAds_frameL);
+			quickAds_CheckCookie(quickAds_frameR);
+			quickAds_CheckCookie(quickAds_frameT);
+			quickAds_CheckCookie(quickAds_frameB);
 			<!-- ENDIF -->
-			quickAds_setPos(jQuery(quickAds_frameL), 'left');
-			quickAds_setPos(jQuery(quickAds_frameR), 'right');
-			quickAds_setPos(jQuery(quickAds_frameT), 'top');
-			quickAds_setPos(jQuery(quickAds_frameB), 'bottom');
-			quickAds_preSetPos();
+			quickAds_Scroll(jQuery(quickAds_frameL), 'left');
+			quickAds_Scroll(jQuery(quickAds_frameR), 'right');
+			quickAds_Scroll(jQuery(quickAds_frameT), 'top');
+			quickAds_Scroll(jQuery(quickAds_frameB), 'bottom');
+			quickAds_SetPos();
 		});
 	/* ]]> */
 	</script>
